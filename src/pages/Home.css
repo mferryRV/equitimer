@@ -1,0 +1,14 @@
+.Hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  padding: 3em 2em;
+  gap: 2em;
+}
+
+.Hero-image {
+  height: 12.5em;
+  width: 12.5em;
+}
