@@ -1,25 +1,26 @@
 import logo from "../img/logo.svg";
 import "./Home.css";
-import Header from "../components/Header";
+import Container from "../components/Container";
+import Button from "../components/Button";
+
+const content = {
+  headline: "Great teams share time",
+  subheadline:
+    "Protect your most valuable resource with feedback from Aristimer",
+  cta: "Measure my meeting",
+};
 
 const Home = () => (
-  <div className="App">
-    <Header />
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
-  </div>
+  <Container>
+    <div class="Hero">
+      <img class="Hero-image" src={logo} />
+      <div>
+        <div class="title">{content.headline}</div>
+        <div class="subtitle">{content.subheadline}</div>
+      </div>
+      <Button text={content.cta} />
+    </div>
+  </Container>
 );
 
 export default Home;
