@@ -1,8 +1,10 @@
-import logo from "./logo.svg";
+import logo from "../img/logo.svg";
 import "./Home.css";
+import Header from "../components/Header";
 
 const Home = () => (
   <div className="App">
+    <Header />
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
       <p>
