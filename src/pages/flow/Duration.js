@@ -1,6 +1,7 @@
 import "./Duration.css";
 import { TextField } from "monday-ui-react-core";
 import FlowPage from "../../components/FlowPage";
+import { pathMap } from "../../Routes";
 
 const content = {
   headline: "Time is limited",
@@ -9,7 +10,7 @@ const content = {
   cta: (m, s) => `Start ${m}m${s}s timer`,
 };
 
-const nextPage = "/";
+const nextPage = pathMap.Timer;
 
 const clean = (val) => (isNaN(parseInt(val)) ? 0 : parseInt(val));
 
