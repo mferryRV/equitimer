@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "../img/logo.svg";
 import "./Home.css";
 import Container from "../components/Container";
+import Headlines from "../components/Headlines";
 import Button from "../components/Button";
 
 const content = {
@@ -18,10 +19,10 @@ const Home = () => {
     <Container>
       <div class="Hero">
         <img class="Hero-image" src={logo} />
-        <div>
-          <div class="title">{content.headline}</div>
-          <div class="subtitle">{content.subheadline}</div>
-        </div>
+        <Headlines
+          headline={content.headline}
+          subheadline={content.subheadline}
+        />
         <Button text={content.cta} onClick={() => navigate("/setup/team/")} />
       </div>
     </Container>
