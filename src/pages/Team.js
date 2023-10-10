@@ -1,11 +1,7 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Team.css";
 import { Slider } from "monday-ui-react-core";
-import Button from "../components/Button";
-import Container from "../components/Container";
-import InputContainer, { Warning } from "../components/InputContainer";
-import Headlines from "../components/Headlines";
+import FlowPage from "../components/FlowPage";
+import Warning from "../components/Warning";
 
 const content = {
   headline: "Everyone deserves time to speak",
@@ -20,44 +16,33 @@ const nextPage = "/";
 
 const inputSettings = {
   min: 2,
-  default: 2,
   max: 12,
   step: 1,
 };
 
-const Team = ({ teamSize, setTeamSize }) => {
-  const navigate = useNavigate();
-
-  return (
-    <Container>
-      <div class="Flow">
-        <Headlines
-          headline={content.headline}
-          subheadline={content.subheadline}
-        />
-        <InputContainer headline={content.inputTitle}>
-          <Slider
-            indicateSelection={true}
-            defaultValue={teamSize}
-            step={inputSettings.step}
-            min={inputSettings.min}
-            max={inputSettings.max}
-            size={Slider.sizes.LARGE}
-            valueFormatter={(value) => `${value}`}
-            onChange={(val) => setTeamSize(val)}
-          />
-          <Warning
-            isShown={teamSize == inputSettings.max}
-            text={content.inputWarning}
-          />
-        </InputContainer>
-        <Button
-          text={content.cta(teamSize)}
-          onClick={() => navigate(nextPage)}
-        />
-      </div>
-    </Container>
-  );
-};
+const Team = ({ teamSize, setTeamSize }) => (
+  <FlowPage
+    headline={content.inputTitle}
+    subheadline={content.subheadline}
+    inputTitle={content.inputTitle}
+    cta={content.cta(teamSize)}
+    nextPage={nextPage}
+  >
+    <Slider
+      indicateSelection={true}
+      defaultValue={teamSize}
+      step={inputSettings.step}
+      min={inputSettings.min}
+      max={inputSettings.max}
+      size={Slider.sizes.LARGE}
+      valueFormatter={(value) => `${value}`}
+      onChange={(val) => setTeamSize(val)}
+    />
+    <Warning
+      isShown={teamSize == inputSettings.max}
+      text={content.inputWarning}
+    />
+  </FlowPage>
+);
 
 export default Team;
