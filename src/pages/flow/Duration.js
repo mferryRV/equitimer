@@ -1,33 +1,17 @@
 import "./Duration.css";
+import { TextField } from "monday-ui-react-core";
 import FlowPage from "../../components/FlowPage";
 
 const content = {
   headline: "Time is limited",
   subheadline: "Specify the meeting duration to anticipate sharing issues",
   inputTitle: "Meeting duration",
-  cta: "Start timer",
+  cta: (m, s) => `Start ${m}m${s}s timer`,
 };
 
 const nextPage = "/";
 
-const NumberInput = ({
-  defaultValue,
-  updateValue,
-  maxValue,
-  maxLength = 3,
-}) => {
-  const clean = (val) => (isNaN(parseInt(val)) ? 0 : parseInt(val));
-
-  return (
-    <input
-      defaultValue={defaultValue}
-      type="number"
-      max={maxValue}
-      maxLength={maxLength}
-      onInput={({ target: { value } }) => updateValue(clean(value))}
-    />
-  );
-};
+const clean = (val) => (isNaN(parseInt(val)) ? 0 : parseInt(val));
 
 const Team = ({ durationSec, setDurationSec }) => {
   const minutes = Math.floor(durationSec / 60);
@@ -35,25 +19,32 @@ const Team = ({ durationSec, setDurationSec }) => {
 
   const updateDuration = (m = 0, s = 0) => setDurationSec(m * 60 + s);
 
+  const handleChangeMin = (value) => updateDuration(clean(value), seconds);
+  const handleChangeSec = (value) => updateDuration(minutes, clean(value));
+
   return (
     <FlowPage
       headline={content.inputTitle}
       subheadline={content.subheadline}
       inputTitle={content.inputTitle}
-      cta={content.cta}
+      cta={content.cta(minutes, seconds)}
       nextPage={nextPage}
     >
-      <NumberInput
-        defaultValue={minutes}
-        updateValue={(m) => updateDuration(m, seconds)}
+      <TextField
+        type={TextField.types.NUMBER}
+        value={minutes}
+        size={TextField.sizes.LARGE}
+        onChange={handleChangeMin}
+        maxLength={3}
       />
       :
-      <NumberInput
-        defaultValue={seconds}
-        updateValue={(s) => updateDuration(minutes, s)}
+      <TextField
+        type={TextField.types.NUMBER}
+        value={seconds}
+        size={TextField.sizes.LARGE}
+        onChange={handleChangeSec}
         maxLength={2}
       />
-      {`${minutes}m${seconds}s`}
     </FlowPage>
   );
 };
