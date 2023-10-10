@@ -12,7 +12,7 @@ const content = {
   cta: "Measure my meeting",
 };
 
-const nextPage = "/setup/team/";
+const nextPage = "/flow/team/";
 
 const Home = () => {
   const navigate = useNavigate();

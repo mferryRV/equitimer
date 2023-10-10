@@ -1,7 +1,7 @@
 import "./Team.css";
 import { Slider } from "monday-ui-react-core";
-import FlowPage from "../components/FlowPage";
-import Warning from "../components/Warning";
+import FlowPage from "../../components/FlowPage";
+import Warning from "../../components/Warning";
 
 const content = {
   headline: "Everyone deserves time to speak",
@@ -12,7 +12,7 @@ const content = {
   cta: (teamSize) => `Time ${teamSize} participants`,
 };
 
-const nextPage = "/";
+const nextPage = "/flow/duration/";
 
 const inputSettings = {
   min: 2,
