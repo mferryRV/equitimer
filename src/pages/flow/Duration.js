@@ -1,7 +1,8 @@
 import "./Duration.css";
 import { TextField } from "monday-ui-react-core";
-import FlowPage from "../../components/FlowPage";
 import { pathMap } from "../../Routes";
+import { parseMinSec } from "../../utils";
+import FlowPage from "../../components/FlowPage";
 
 const content = {
   headline: "Time is limited",
@@ -15,8 +16,7 @@ const nextPage = pathMap.Timer;
 const clean = (val) => (isNaN(parseInt(val)) ? 0 : parseInt(val));
 
 const Team = ({ durationSec, setDurationSec }) => {
-  const minutes = Math.floor(durationSec / 60);
-  const seconds = durationSec % 60;
+  const [minutes, seconds] = parseMinSec(durationSec);
 
   const updateDuration = (m = 0, s = 0) => setDurationSec(m * 60 + s);
 

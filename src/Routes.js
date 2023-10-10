@@ -22,6 +22,4 @@ export const pathMap = routes.reduce((obj, { path, component }) => {
   return obj;
 }, {});
 
-console.log(pathMap);
-
 export default routes;

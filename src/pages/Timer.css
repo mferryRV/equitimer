@@ -1,0 +1,17 @@
+.Timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  padding: 1em 1em;
+}
+
+.Timer > .title {
+  padding-bottom: 0;
+}
+
+.Clock {
+  font-size: 3em;
+  font-weight: 700;
+}
