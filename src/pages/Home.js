@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import logo from "../img/logo.svg";
 import "./Home.css";
 import Container from "../components/Container";
@@ -10,17 +11,25 @@ const content = {
   cta: "Measure my meeting",
 };
 
-const Home = () => (
-  <Container>
-    <div class="Hero">
-      <img class="Hero-image" src={logo} />
-      <div>
-        <div class="title">{content.headline}</div>
-        <div class="subtitle">{content.subheadline}</div>
+const Home = () => {
+  const navigate = useNavigate();
+
+  const startSetup = () => {
+    navigate("/setup/team/");
+  };
+
+  return (
+    <Container>
+      <div class="Hero">
+        <img class="Hero-image" src={logo} />
+        <div>
+          <div class="title">{content.headline}</div>
+          <div class="subtitle">{content.subheadline}</div>
+        </div>
+        <Button text={content.cta} onClick={startSetup} />
       </div>
-      <Button text={content.cta} />
-    </div>
-  </Container>
-);
+    </Container>
+  );
+};
 
 export default Home;
