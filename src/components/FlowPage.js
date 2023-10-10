@@ -22,7 +22,9 @@ const FlowPage = ({
           <div class="title">{inputTitle}</div>
           {children}
         </div>
-        <Button text={cta} onClick={() => navigate(nextPage)} />
+        <div class="Sticky">
+          <Button text={cta} onClick={() => navigate(nextPage)} />
+        </div>
       </div>
     </Container>
   );
