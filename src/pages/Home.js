@@ -14,10 +14,6 @@ const content = {
 const Home = () => {
   const navigate = useNavigate();
 
-  const startSetup = () => {
-    navigate("/setup/team/");
-  };
-
   return (
     <Container>
       <div class="Hero">
@@ -26,7 +22,7 @@ const Home = () => {
           <div class="title">{content.headline}</div>
           <div class="subtitle">{content.subheadline}</div>
         </div>
-        <Button text={content.cta} onClick={startSetup} />
+        <Button text={content.cta} onClick={() => navigate("/setup/team/")} />
       </div>
     </Container>
   );
