@@ -2,6 +2,7 @@ import "./Team.css";
 import { Slider } from "monday-ui-react-core";
 import FlowPage from "../../components/FlowPage";
 import Warning from "../../components/Warning";
+import { pathMap } from "../../Routes";
 
 const content = {
   headline: "Everyone deserves time to speak",
@@ -12,7 +13,7 @@ const content = {
   cta: (teamSize) => `Time ${teamSize} participants`,
 };
 
-const nextPage = "/flow/duration/";
+const nextPage = pathMap.Duration;
 
 const inputSettings = {
   min: 2,
@@ -39,7 +40,7 @@ const Team = ({ teamSize, setTeamSize }) => (
       onChange={(val) => setTeamSize(val)}
     />
     <Warning
-      isShown={teamSize == inputSettings.max}
+      isShown={teamSize === inputSettings.max}
       text={content.inputWarning}
     />
   </FlowPage>

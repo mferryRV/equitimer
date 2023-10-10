@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "monday-ui-react-core/tokens";
-import Home from "./pages/Home";
-import Team from "./pages/flow/Team";
-import Duration from "./pages/flow/Duration";
+import routes from "./Routes";
+import pages from "./pages";
 
 const App = () => {
   // Default team size is 2
@@ -14,20 +13,22 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/flow/team/"
-          element={<Team teamSize={teamSize} setTeamSize={setTeamSize} />}
-        />
-        <Route
-          path="/flow/duration/"
-          element={
-            <Duration
-              durationSec={durationSec}
-              setDurationSec={setDurationSec}
+        {routes.map(({ path, component }) => {
+          const Page = pages[component];
+          return (
+            <Route
+              path={path}
+              element={
+                <Page
+                  teamSize={teamSize}
+                  setTeamSize={setTeamSize}
+                  durationSec={durationSec}
+                  setDurationSec={setDurationSec}
+                />
+              }
             />
-          }
-        />
+          );
+        })}
       </Routes>
     </>
   );
