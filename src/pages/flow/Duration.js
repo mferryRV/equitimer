@@ -30,21 +30,23 @@ const Team = ({ durationSec, setDurationSec }) => {
       cta={content.cta(minutes, seconds)}
       nextPage={nextPage}
     >
-      <TextField
-        type={TextField.types.NUMBER}
-        value={minutes}
-        size={TextField.sizes.LARGE}
-        onChange={handleChangeMin}
-        maxLength={3}
-      />
-      :
-      <TextField
-        type={TextField.types.NUMBER}
-        value={seconds}
-        size={TextField.sizes.LARGE}
-        onChange={handleChangeSec}
-        maxLength={2}
-      />
+      <div class="Clock">
+        <TextField
+          type={TextField.types.NUMBER}
+          value={minutes}
+          size={TextField.sizes.LARGE}
+          onChange={handleChangeMin}
+          maxLength={3}
+        />
+        <div class="Clock-colon">:</div>
+        <TextField
+          type={TextField.types.NUMBER}
+          value={seconds}
+          size={TextField.sizes.LARGE}
+          onChange={handleChangeSec}
+          maxLength={2}
+        />
+      </div>
     </FlowPage>
   );
 };
