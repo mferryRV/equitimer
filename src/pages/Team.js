@@ -25,9 +25,8 @@ const inputSettings = {
   step: 1,
 };
 
-const Team = () => {
+const Team = ({ teamSize, setTeamSize }) => {
   const navigate = useNavigate();
-  const [teamSize, setTeamSize] = useState(inputSettings.default);
 
   return (
     <Container>
