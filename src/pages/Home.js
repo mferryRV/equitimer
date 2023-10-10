@@ -12,6 +12,8 @@ const content = {
   cta: "Measure my meeting",
 };
 
+const nextPage = "/setup/team/";
+
 const Home = () => {
   const navigate = useNavigate();
 
@@ -23,7 +25,7 @@ const Home = () => {
           headline={content.headline}
           subheadline={content.subheadline}
         />
-        <Button text={content.cta} onClick={() => navigate("/setup/team/")} />
+        <Button text={content.cta} onClick={() => navigate(nextPage)} />
       </div>
     </Container>
   );

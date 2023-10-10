@@ -16,6 +16,8 @@ const content = {
   cta: (teamSize) => `Time ${teamSize} participants`,
 };
 
+const nextPage = "/";
+
 const inputSettings = {
   min: 2,
   default: 2,
@@ -50,7 +52,10 @@ const Team = () => {
             text={content.inputWarning}
           />
         </InputContainer>
-        <Button text={content.cta(teamSize)} onClick={() => navigate("/")} />
+        <Button
+          text={content.cta(teamSize)}
+          onClick={() => navigate(nextPage)}
+        />
       </div>
     </Container>
   );
