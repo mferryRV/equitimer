@@ -1,0 +1,11 @@
+.Clock {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.Clock-colon {
+  font-size: 2em;
+  margin: 0.25em;
+}

@@ -1,0 +1,12 @@
+.Warning {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 2em;
+}
+
+.Warning > span {
+  font-size: 0.75em;
+  color: red;
+}
