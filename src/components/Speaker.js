@@ -12,6 +12,7 @@ const Speaker = ({
   name,
   timeElapsed,
   speakerTimer,
+  isActive,
   onClick = () => {},
 }) => {
   const speakerName = name || content.defaultName(speakerIndex);
@@ -23,7 +24,12 @@ const Speaker = ({
     leftPadNum(Math.floor((100 * speakerTimer) / (timeElapsed || 1))) + "%";
 
   return (
-    <div className={`Speaker Color-${speakerIndex}`} onClick={onClick}>
+    <div
+      className={`Speaker Color-${speakerIndex} ${
+        isActive ? "spk-active" : ""
+      }`}
+      onClick={onClick}
+    >
       <div className="Speaker-name">{speakerName}</div>
       <img className="Speaker-image" alt={content.imgAlt} src={logo} />
       <div className="Speaker-data">

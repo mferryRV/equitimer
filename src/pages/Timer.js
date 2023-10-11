@@ -47,6 +47,8 @@ const Timer = ({ teamSize, durationSec }) => {
     }
   };
 
+  const isActive = (i) => !isPaused && speaker === i;
+
   return (
     <Container>
       <div className="Timer">
@@ -63,6 +65,7 @@ const Timer = ({ teamSize, durationSec }) => {
             speakerIndex={i + 1}
             timeElapsed={timeElapsed}
             speakerTimer={time}
+            isActive={isActive(i + 1)}
             onClick={() => handleSpeakerChange(i + 1)}
           />
         ))}
@@ -72,6 +75,7 @@ const Timer = ({ teamSize, durationSec }) => {
         />
         <Button
           text={`Non-speaking time: ${noSpeaker}s`}
+          isActive={isActive(0)}
           onClick={() => handleSpeakerChange(0)}
         />
       </div>
