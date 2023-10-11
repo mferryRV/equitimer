@@ -16,13 +16,13 @@ const FlowPage = ({
 
   return (
     <Container>
-      <div class="Flow">
+      <div className="Flow">
         <Headlines headline={headline} subheadline={subheadline} />
-        <div class="Input">
-          <div class="title">{inputTitle}</div>
+        <div className="Input">
+          <div className="title">{inputTitle}</div>
           {children}
         </div>
-        <div class="Sticky">
+        <div className="Sticky">
           <Button text={cta} onClick={() => navigate(nextPage)} />
         </div>
       </div>

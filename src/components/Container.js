@@ -2,7 +2,7 @@ import "./Container.css";
 import Header from "./Header";
 
 const Container = ({ children }) => (
-  <div class="Container">
+  <div className="Container">
     <Header />
     {children}
   </div>

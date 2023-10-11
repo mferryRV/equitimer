@@ -1,7 +1,7 @@
 const Headlines = ({ headline, subheadline }) => (
   <div>
-    <div class="title">{headline}</div>
-    {subheadline && <div class="subtitle">{subheadline}</div>}
+    <div className="title">{headline}</div>
+    {subheadline && <div className="subtitle">{subheadline}</div>}
   </div>
 );
 

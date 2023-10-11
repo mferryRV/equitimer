@@ -15,7 +15,7 @@ const Clock = ({ isPaused = true, timer, setTimer }) => {
     return () => clearInterval(interval);
   }, [isPaused, timer, setTimer]);
 
-  return <div class="Clock">{`${leftPadNum(min)}:${leftPadNum(sec)}`}</div>;
+  return <div className="Clock">{`${leftPadNum(min)}:${leftPadNum(sec)}`}</div>;
 };
 
 export default Clock;

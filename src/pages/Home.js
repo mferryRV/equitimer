@@ -21,8 +21,8 @@ const Home = () => {
 
   return (
     <Container>
-      <div class="Hero">
-        <img class="Hero-image" alt={content.imgAlt} src={logo} />
+      <div className="Hero">
+        <img className="Hero-image" alt={content.imgAlt} src={logo} />
         <Headlines
           headline={content.headline}
           subheadline={content.subheadline}

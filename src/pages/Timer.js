@@ -10,9 +10,10 @@ const Timer = ({ teamSize, durationSec }) => {
 
   return (
     <Container>
-      <div class="Timer">
-        <div class="title">Time remaining</div>
+      <div className="Timer">
+        <div className="title">Time remaining</div>
         <Clock isPaused={isPaused} timer={timer} setTimer={setTimer} />
+        {/* TODO: Add team members and make them clickable */}
         <Button
           text={isPaused ? "Start timer" : "Pause timer"}
           onClick={() => setPaused(!isPaused)}

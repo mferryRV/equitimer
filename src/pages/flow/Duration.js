@@ -31,7 +31,7 @@ const Team = ({ durationSec, setDurationSec }) => {
       cta={content.cta(minutes, seconds)}
       nextPage={nextPage}
     >
-      <div class="Clock">
+      <div className="Clock">
         <TextField
           type={TextField.types.NUMBER}
           value={minutes}
@@ -39,7 +39,7 @@ const Team = ({ durationSec, setDurationSec }) => {
           onChange={handleChangeMin}
           maxLength={3}
         />
-        <div class="Clock-colon">:</div>
+        <div className="Clock-colon">:</div>
         <TextField
           type={TextField.types.NUMBER}
           value={seconds}
