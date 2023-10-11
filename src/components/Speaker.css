@@ -1,3 +1,33 @@
+.Speaker {
+  box-sizing: border-box;
+  max-width: 10em;
+  width: 100%;
+  background-color: #f0f0f0;
+  border: 1px transparent solid;
+  padding: 0.5em;
+}
+
+.Speaker:hover {
+  border: 1px #a0a0a0 solid;
+}
+
+.Speaker-name {
+  text-align: left;
+  font-size: 0.75em;
+}
+
+.Speaker-image {
+  height: 4em;
+}
+
+.Speaker-data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 0.75em;
+  font-weight: 700;
+}
+
 .spk-active {
   background-color: aqua;
 }
