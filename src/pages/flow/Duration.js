@@ -25,13 +25,13 @@ const Team = ({ durationSec, setDurationSec }) => {
 
   return (
     <FlowPage
-      headline={content.inputTitle}
+      headline={content.headline}
       subheadline={content.subheadline}
       inputTitle={content.inputTitle}
       cta={content.cta(minutes, seconds)}
       nextPage={nextPage}
     >
-      <div className="Clock">
+      <div className="Duration-display">
         <TextField
           type={TextField.types.NUMBER}
           value={minutes}
@@ -39,7 +39,7 @@ const Team = ({ durationSec, setDurationSec }) => {
           onChange={handleChangeMin}
           maxLength={3}
         />
-        <div className="Clock-colon">:</div>
+        <div className="Duration-display-colon">:</div>
         <TextField
           type={TextField.types.NUMBER}
           value={seconds}

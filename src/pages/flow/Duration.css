@@ -1,11 +1,12 @@
-.Clock {
+.Duration-display {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding-bottom: 2em;
 }
 
-.Clock-colon {
+.Duration-display-colon {
   font-size: 2em;
   margin: 0.25em;
 }
