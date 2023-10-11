@@ -17,6 +17,9 @@ const Timer = ({ teamSize, durationSec }) => {
   const [teamTimers, setTeamTimers] = useState(
     Array.from({ length: teamSize + 1 }, () => 0)
   );
+
+  const [noSpeaker, ...speakerTimers] = teamTimers;
+
   // Save the index of the current speaker, where 0 is nobody
   const [speaker, setSpeaker] = useState(0);
 
@@ -54,18 +57,22 @@ const Timer = ({ teamSize, durationSec }) => {
           timer={timer}
           setTimer={setTimer}
         />
-        {teamTimers.map((time, i) => (
+        {speakerTimers.map((time, i) => (
           <Speaker
-            key={`participant-${i}`}
-            speakerIndex={i}
+            key={`participant-${i + 1}`}
+            speakerIndex={i + 1}
             timeElapsed={timeElapsed}
             speakerTimer={time}
-            onClick={() => handleSpeakerChange(i)}
+            onClick={() => handleSpeakerChange(i + 1)}
           />
         ))}
         <Button
           text={isPaused ? "Start timer" : "Pause timer"}
           onClick={() => setPaused(!isPaused)}
+        />
+        <Button
+          text={`Non-speaking time: ${noSpeaker}s`}
+          onClick={() => handleSpeakerChange(0)}
         />
       </div>
     </Container>
