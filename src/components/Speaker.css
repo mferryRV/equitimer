@@ -1,10 +1,12 @@
 .Speaker {
   box-sizing: border-box;
-  max-width: 10em;
+  max-width: 26em;
+  min-width: 8em;
   width: 100%;
   background-color: #f0f0f0;
-  border: 1px transparent solid;
+  border: 1px #d0d0d0 solid;
   padding: 0.5em;
+  flex: 1;
 }
 
 .Speaker:hover {
@@ -28,6 +30,146 @@
   font-weight: 700;
 }
 
-.spk-active {
-  background-color: aqua;
+.spk-color-1 {
+  background-color: var(--color-grass_green-selected);
+}
+
+.spk-color-1:hover {
+  background-color: var(--color-grass_green-hover);
+}
+
+.spk-color-1.spk-active {
+  background-color: var(--color-grass_green);
+}
+
+.spk-color-2 {
+  background-color: var(--color-stuck-red-selected);
+}
+
+.spk-color-2:hover {
+  background-color: var(--color-stuck-red-hover);
+}
+
+.spk-color-2.spk-active {
+  background-color: var(--color-stuck-red);
+}
+
+.spk-color-3 {
+  background-color: var(--color-dark-blue-selected);
+}
+
+.spk-color-3:hover {
+  background-color: var(--color-dark-blue-hover);
+}
+
+.spk-color-3.spk-active {
+  background-color: var(--color-dark-blue);
+}
+
+.spk-color-4 {
+  background-color: var(--warning-color-selected);
+}
+
+.spk-color-4:hover {
+  background-color: var(--warning-color-hover);
+}
+
+.spk-color-4.spk-active {
+  background-color: var(--warning-color);
+}
+
+.spk-color-5 {
+  background-color: var(--color-purple-selected);
+}
+
+.spk-color-5:hover {
+  background-color: var(--color-purple-hover);
+}
+
+.spk-color-5.spk-active {
+  background-color: var(--color-purple);
+}
+
+.spk-color-6 {
+  background-color: var(--color-dark-orange-selected);
+}
+
+.spk-color-6:hover {
+  background-color: var(--color-dark-orange-hover);
+}
+
+.spk-color-6.spk-active {
+  background-color: var(--color-dark-orange);
+}
+
+.spk-color-7 {
+  background-color: var(--color-indigo-selected);
+}
+
+.spk-color-7:hover {
+  background-color: var(--color-indigo-hover);
+}
+
+.spk-color-7.spk-active {
+  background-color: var(--color-indigo);
+}
+
+.spk-color-8 {
+  background-color: var(--color-done-green-selected);
+}
+
+.spk-color-8:hover {
+  background-color: var(--color-done-green-hover);
+}
+
+.spk-color-8.spk-active {
+  background-color: var(--color-done-green);
+}
+
+.spk-color-9 {
+  background-color: var(--color-lipstick-selected);
+}
+
+.spk-color-9:hover {
+  background-color: var(--color-lipstick-hover);
+}
+
+.spk-color-9.spk-active {
+  background-color: var(--color-lipstick);
+}
+
+.spk-color-10 {
+  background-color: var(--color-teal-selected);
+}
+
+.spk-color-10:hover {
+  background-color: var(--color-teal-hover);
+}
+
+.spk-color-10.spk-active {
+  background-color: var(--color-teal);
+}
+
+.spk-color-11 {
+  background-color: var(--color-lilac-selected);
+}
+
+.spk-color-11:hover {
+  background-color: var(--color-lilac-hover);
+}
+
+.spk-color-11.spk-active {
+  background-color: var(--color-lilac);
+}
+
+.spk-color-12 {
+  background-color: var(--color-bright-green-selected);
+}
+
+.spk-color-12:hover {
+  background-color: var(--color-bright-green-hover);
+}
+
+.spk-color-12.spk-active {
+  background-color: var(--color-bright-green);
 }

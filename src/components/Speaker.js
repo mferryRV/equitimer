@@ -25,7 +25,7 @@ const Speaker = ({
 
   return (
     <div
-      className={`Speaker Color-${speakerIndex} ${
+      className={`Speaker spk-color-${speakerIndex} ${
         isActive ? "spk-active" : ""
       }`}
       onClick={onClick}

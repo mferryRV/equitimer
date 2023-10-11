@@ -59,24 +59,26 @@ const Timer = ({ teamSize, durationSec }) => {
           timer={timer}
           setTimer={setTimer}
         />
-        {speakerTimers.map((time, i) => (
-          <Speaker
-            key={`participant-${i + 1}`}
-            speakerIndex={i + 1}
-            timeElapsed={timeElapsed}
-            speakerTimer={time}
-            isActive={isActive(i + 1)}
-            onClick={() => handleSpeakerChange(i + 1)}
-          />
-        ))}
-        <Button
-          text={isPaused ? "Start timer" : "Pause timer"}
-          onClick={() => setPaused(!isPaused)}
-        />
+        <div className="Speaker-grid">
+          {speakerTimers.map((time, i) => (
+            <Speaker
+              key={`participant-${i + 1}`}
+              speakerIndex={i + 1}
+              timeElapsed={timeElapsed}
+              speakerTimer={time}
+              isActive={isActive(i + 1)}
+              onClick={() => handleSpeakerChange(i + 1)}
+            />
+          ))}
+        </div>
         <Button
           text={`Non-speaking time: ${noSpeaker}s`}
           isActive={isActive(0)}
           onClick={() => handleSpeakerChange(0)}
+        />
+        <Button
+          text={isPaused ? "Start timer" : "Pause timer"}
+          onClick={() => setPaused(!isPaused)}
         />
       </div>
     </Container>
