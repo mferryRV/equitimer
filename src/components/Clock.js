@@ -13,7 +13,7 @@ const Clock = ({ isPaused = true, intervalSec = 1, timer, setTimer }) => {
     );
 
     return () => clearInterval(interval);
-  }, [isPaused, timer, setTimer]);
+  }, [isPaused, timer, setTimer, intervalSec]);
 
   return <div className="Clock">{`${leftPadNum(min)}:${leftPadNum(sec)}`}</div>;
 };

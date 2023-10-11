@@ -3,12 +3,15 @@ import "./Timer.css";
 import Container from "../components/Container";
 import Clock from "../components/Clock";
 import Button from "../components/Button";
+import Speaker from "../components/Speaker";
 
 const intervalSec = 1;
 
 const Timer = ({ teamSize, durationSec }) => {
   const [timer, setMainTimer] = useState(durationSec);
   const [isPaused, setPaused] = useState(true);
+
+  const timeElapsed = durationSec - timer;
 
   // Create a timer for each team member and one for shared time
   const [teamTimers, setTeamTimers] = useState(
@@ -51,11 +54,12 @@ const Timer = ({ teamSize, durationSec }) => {
           timer={timer}
           setTimer={setTimer}
         />
-        {/* TODO: Add team members and make them clickable */}
         {teamTimers.map((time, i) => (
-          <Button
+          <Speaker
             key={`participant-${i}`}
-            text={i === 0 ? `None: ${time}` : `Team member ${i}: ${time}`}
+            speakerIndex={i}
+            timeElapsed={timeElapsed}
+            speakerTimer={time}
             onClick={() => handleSpeakerChange(i)}
           />
         ))}
