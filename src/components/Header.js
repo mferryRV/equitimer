@@ -3,8 +3,8 @@ import "./Header.css";
 
 // TODO: Make links go somewhere
 const Header = () => (
-  <header class="Header">
-    <a href="/" class="Header-text">
+  <header className="Header">
+    <a href="/" className="Header-text">
       Aristimer
     </a>
     <a href="/">

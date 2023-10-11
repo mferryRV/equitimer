@@ -17,6 +17,7 @@ const App = () => {
           const Page = pages[component];
           return (
             <Route
+              key={path}
               path={path}
               element={
                 <Page

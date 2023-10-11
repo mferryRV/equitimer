@@ -7,6 +7,6 @@ export const parseMinSec = (durationSec) => {
 
 export const leftPadNum = (number, digits = 2) => {
   const numDigits = number.toString().length;
-
-  return "0".repeat(digits - numDigits) + number.toString();
+  const diff = digits - numDigits;
+  return (diff > 0 ? "0".repeat(diff) : "") + number.toString();
 };

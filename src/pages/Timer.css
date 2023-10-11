@@ -5,13 +5,20 @@
   align-items: center;
   text-align: center;
   padding: 1em 1em;
+  gap: 0.5em;
 }
 
-.Timer > .title {
-  padding-bottom: 0;
+.Timer > div > .title {
+  padding-bottom: 0em;
 }
 
-.Clock {
-  font-size: 3em;
-  font-weight: 700;
+.Speaker-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 40em;
+  gap: 0.5em;
 }
