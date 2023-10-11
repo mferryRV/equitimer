@@ -10,7 +10,7 @@
 }
 
 .Speaker:hover {
-  border: 1px #a0a0a0 solid;
+  border: 1px black solid;
 }
 
 .Speaker-name {
@@ -28,6 +28,10 @@
   justify-content: space-between;
   font-size: 0.75em;
   font-weight: 700;
+}
+
+.spk-active {
+  border: 1px black solid;
 }
 
 .spk-color-1 {
