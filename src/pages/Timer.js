@@ -52,13 +52,15 @@ const Timer = ({ teamSize, durationSec }) => {
   return (
     <Container>
       <div className="Timer">
-        <div className="title">Time remaining</div>
-        <Clock
-          isPaused={isPaused}
-          intervalSec={intervalSec}
-          timer={timer}
-          setTimer={setTimer}
-        />
+        <div>
+          <div className="title">Time remaining</div>
+          <Clock
+            isPaused={isPaused}
+            intervalSec={intervalSec}
+            timer={timer}
+            setTimer={setTimer}
+          />
+        </div>
         <div className="Speaker-grid">
           {speakerTimers.map((time, i) => (
             <Speaker

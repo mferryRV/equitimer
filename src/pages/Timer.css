@@ -5,10 +5,10 @@
   align-items: center;
   text-align: center;
   padding: 1em 1em;
-  gap: 1em;
+  gap: 0.5em;
 }
 
-.Timer > .title {
+.Timer > div > .title {
   padding-bottom: 0em;
 }
 
