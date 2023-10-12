@@ -1,0 +1,9 @@
+.Results {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  padding: 1em;
+  gap: 0.5em;
+}

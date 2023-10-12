@@ -36,6 +36,8 @@ const Timer = ({ teamSize, durationSec, setResults }) => {
   // Make a list of speaker change events
   const [events, setEvents] = useState([]);
 
+  const newEvent = (timeElapsed, speaker) => ({ timeElapsed, speaker });
+
   const [noSpeaker, ...speakerTimers] = teamTimers;
 
   const setTimer = (seconds) => {
@@ -52,7 +54,7 @@ const Timer = ({ teamSize, durationSec, setResults }) => {
     // Update the speaker
     setSpeaker(newSpeaker);
     // Record the change
-    setEvents([...events, { timer, newSpeaker }]);
+    setEvents([...events, newEvent(timeElapsed, newSpeaker)]);
     // Unpause the timer
     if (isPaused) {
       setPaused(false);
@@ -67,10 +69,12 @@ const Timer = ({ teamSize, durationSec, setResults }) => {
       : content.helpTextStart;
 
   const endMeeting = () => {
+    // Store results, including the end event
     setResults({
-      events,
+      events: [...events, newEvent(timeElapsed, speaker)],
       teamTimers,
     });
+
     navigate(nextPage);
   };
 
