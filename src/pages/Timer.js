@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Timer.css";
+import { pathMap } from "../Routes";
 import Container from "../components/Container";
 import Clock from "../components/Clock";
 import Button from "../components/Button";
@@ -15,7 +17,11 @@ const content = {
   endButton: "End meeting",
 };
 
-const Timer = ({ teamSize, durationSec }) => {
+const nextPage = pathMap.Results;
+
+const Timer = ({ teamSize, durationSec, setResults }) => {
+  const navigate = useNavigate();
+
   const [timer, setMainTimer] = useState(durationSec);
   const timeElapsed = durationSec - timer;
 
@@ -60,6 +66,14 @@ const Timer = ({ teamSize, durationSec }) => {
       ? content.helpTextContinue
       : content.helpTextStart;
 
+  const endMeeting = () => {
+    setResults({
+      events,
+      teamTimers,
+    });
+    navigate(nextPage);
+  };
+
   return (
     <Container>
       <div className="Timer">
@@ -96,7 +110,7 @@ const Timer = ({ teamSize, durationSec }) => {
             onClick={() => setPaused(!isPaused)}
           />
         </div>
-        <Button text={content.endButton} onClick={() => {}} />
+        <Button text={content.endButton} onClick={endMeeting} />
       </div>
     </Container>
   );
