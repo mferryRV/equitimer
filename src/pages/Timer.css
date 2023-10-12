@@ -1,4 +1,5 @@
 .Timer {
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -6,10 +7,20 @@
   text-align: center;
   padding: 1em 1em;
   gap: 0.5em;
+  max-width: 40em;
 }
 
-.Timer > div > .title {
+.clock-container {
+  width: 100%;
+}
+
+.clock-container > .title {
   padding-bottom: 0em;
+}
+
+.help-text {
+  text-align: left;
+  font-size: 0.75em;
 }
 
 .Speaker-grid {
@@ -19,6 +30,20 @@
   align-items: flex-start;
   justify-content: space-around;
   width: 100%;
-  max-width: 40em;
   gap: 0.5em;
+}
+
+.btn-row-1 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0.5em;
+  width: 100%;
+}
+
+.btn-row-1 > div:first-child {
+  grid-column: 1 / span 8;
+}
+
+.btn-row-1 > div:last-child {
+  grid-column: 9 / span 4;
 }
