@@ -6,11 +6,11 @@ const content = {
   headline: "Your results",
 };
 
-const Results = ({ results }) => (
+const Results = ({ results, teamSize }) => (
   <Container>
     <div className="Results">
       <div className="title">{content.headline}</div>
-      <InstantReplay events={results.events} />
+      <InstantReplay teamSize={teamSize} events={results.events} />
       {/* <GiniCoefficient teamTimers={results.teamTimers} />
       <TeamBarChart teamTimers={results.teamTimers} /> */}
     </div>
