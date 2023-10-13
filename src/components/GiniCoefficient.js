@@ -1,5 +1,6 @@
 import "./GiniCoefficient.css";
 import exampleTeamTimers from "../data/exampleTeamTimers.json";
+import countryGinis from "../data/giniCoefficients.json";
 
 const sum = (arr) => arr.reduce((total, val) => total + val, 0);
 
@@ -26,7 +27,22 @@ const getGiniCoefficient = (teamTimers) => {
 const GiniCoefficient = ({ teamTimers }) => {
   const timers = teamTimers.length > 0 ? teamTimers : exampleTeamTimers;
   const giniCoefficient = getGiniCoefficient(timers);
-  return <div className="Gini">Gini Coefficient: {giniCoefficient}</div>;
+  const comparison = countryGinis
+    .filter(({ gini }) => gini > giniCoefficient)
+    .reverse()[0];
+  const worldMinimum = Math.min(...countryGinis.map(({ gini }) => gini));
+  return (
+    <div className="Gini">
+      <div className="subtitle">Gini coefficient: {giniCoefficient}</div>
+      <div>
+        Your conversation was more equitable than the wealth of{" "}
+        {giniCoefficient < worldMinimum
+          ? "any country on earth"
+          : `${comparison.country} (${comparison.gini})`}
+        .
+      </div>
+    </div>
+  );
 };
 
 export default GiniCoefficient;
