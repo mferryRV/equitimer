@@ -1,8 +1,9 @@
 .Team-bar {
-  display: flex;
-  flex-direction: row;
+  width: 100%;
 }
 
-.temp-bar {
-  padding: 1em;
+.bar-svg {
+  margin: 2em 2em 1em 2em;
+  display: block;
+  overflow: visible;
 }
