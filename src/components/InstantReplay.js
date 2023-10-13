@@ -1,68 +1,89 @@
+import { useEffect, useRef, useState } from "react";
+import * as d3 from "d3";
 import "./InstantReplay.css";
+import exampleEvents from "../data/exampleEvents.json";
+import { speakerColors, interpolateEvents } from "../utils";
 
-const formatSpeaker = (i) => `Participant ${i}`;
+const createSvgGraph = (data, svgRef) => {
+  data = data.length > 0 ? data : exampleEvents;
+  const finalState = data[data.length - 1];
+  const maxTimer = Math.max(...Object.values(finalState));
 
-// Rows show the timer of each participant at a given second
-const createFirstRow = (teamSize) => {
-  const row = {};
-  for (let i = 1; i <= teamSize; i++) {
-    // Set their initial timers at 0
-    row[formatSpeaker(i)] = 0;
-  }
-  return row;
-};
+  const width = 640;
+  const height = 400;
 
-const interpolateEvents = (teamSize, events) => {
-  // Get a list of speakers in each second
-  const speakersBySecond = events.reduce(
-    (seconds, { timeElapsed, speaker }, i, eventsArr) => {
-      // Check the time of the next event
-      const speechDuration = eventsArr[i + 1]
-        ? eventsArr[i + 1].timeElapsed - timeElapsed
-        : 1;
+  const svg = d3
+    .select(svgRef.current)
+    .attr("width", width)
+    .attr("height", height);
 
-      for (let i = 0; i < speechDuration; i++) {
-        seconds.push(formatSpeaker(speaker));
-      }
-      return seconds;
-    },
-    []
+  const xScale = d3
+    .scaleLinear()
+    .domain([0, data.length - 1])
+    .range([0, width]);
+
+  const yScale = d3.scaleLinear().domain([0, maxTimer]).range([height, 0]);
+
+  const generateScaledLine = (speakerKey) => (d) =>
+    d3
+      .line()
+      .x((d, i) => xScale(i))
+      .y((d) => yScale(d[speakerKey]))(d);
+
+  const xAxis = d3.axisBottom(xScale).ticks(10);
+  const yAxis = d3.axisLeft(yScale).ticks(10);
+
+  svg
+    .append("g")
+    .call(xAxis)
+    .attr("transform", `translate(0,${height})`)
+    .call((g) =>
+      g
+        .append("text")
+        .attr("x", -32)
+        .attr("y", -height - 16)
+        .attr("fill", "currentColor")
+        .attr("text-anchor", "start")
+        .text("↑ Speaking Time (s)")
+    );
+  svg
+    .append("g")
+    .call(yAxis)
+    .call((g) =>
+      g
+        .append("text")
+        .attr("x", width - 72)
+        .attr("y", height + 32)
+        .attr("fill", "currentColor")
+        .attr("text-anchor", "start")
+        .text("Meeting Time (s)")
+    );
+
+  Object.keys(finalState).forEach((formattedSpeaker) =>
+    svg
+      .selectAll(".line")
+      .data([data])
+      .join("path")
+      .attr("d", generateScaledLine(formattedSpeaker))
+      .attr("fill", "none")
+      .attr("stroke", speakerColors[formattedSpeaker])
+      .attr("stroke-width", 2)
   );
-
-  // Create a row for every second
-  const rows = [];
-
-  // Update the timer of the relevant speaker at each second
-  speakersBySecond.forEach((speakerKey, i) => {
-    if (i === 0) {
-      // During second 0, no time is awarded
-      rows.push(createFirstRow(teamSize));
-    } else if (speakerKey === 0) {
-      // No time is added when nobody is talking
-      rows.push(rows[rows.length - 1]);
-    } else {
-      const previousRow = rows[rows.length - 1];
-      // Add one to the relevant speaker
-      rows.push({ ...previousRow, [speakerKey]: previousRow[speakerKey] + 1 });
-    }
-  });
-
-  return rows;
 };
 
-// TODO: create a line chart of contributions over time
 const InstantReplay = ({ teamSize, events }) => {
-  console.log(interpolateEvents(teamSize, events));
+  const svgRef = useRef();
+  const [data, setData] = useState(interpolateEvents(teamSize, events));
+
+  // Create SVG chart
+  useEffect(() => {
+    createSvgGraph(data, svgRef);
+  }, [data]);
+
   return (
     <div className="Instant-replay">
       <div className="subtitle">Instant Replay</div>
-      <ul>
-        {events.map(({ timeElapsed, speaker }) => (
-          <li>
-            Speaker {speaker} @ {timeElapsed}
-          </li>
-        ))}
-      </ul>
+      <svg ref={svgRef} className="replay-svg"></svg>
     </div>
   );
 };
