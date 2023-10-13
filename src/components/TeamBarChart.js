@@ -12,7 +12,7 @@ const speakerNameShort = (i) => `#${i}`;
 
 const createSvgGraph = (data, svgRef, parentRef) => {
   // Ignore the noSpeaker timer
-  const speakingTimes = data.slice(1);
+  const speakingTimes = data.slice(1).map((sec) => sec / 60);
   const speakers = speakingTimes.length;
   const maxTimer = Math.max(...speakingTimes);
 
@@ -53,11 +53,11 @@ const createSvgGraph = (data, svgRef, parentRef) => {
     .call((g) =>
       g
         .append("text")
-        .attr("x", -40)
+        .attr("x", -32)
         .attr("y", -16)
         .attr("fill", "currentColor")
         .attr("text-anchor", "start")
-        .text("↑ Speaking Time (s)")
+        .text("↑ Speaking Time (min)")
     );
 
   svg.append("g").call(xAxis).attr("transform", `translate(-8,${height})`);
