@@ -15,6 +15,10 @@ const routes = [
     path: "/timer",
     component: "Timer",
   },
+  {
+    path: "/results",
+    component: "Results",
+  },
 ];
 
 export const pathMap = routes.reduce((obj, { path, component }) => {

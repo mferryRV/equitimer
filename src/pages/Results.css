@@ -1,0 +1,15 @@
+.Results {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  padding: 0.5em 1em;
+  gap: 0.5em;
+  max-width: 40em;
+}
+
+.Results > .title {
+  padding-bottom: 0;
+}

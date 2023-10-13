@@ -1,0 +1,9 @@
+.Team-bar {
+  width: 100%;
+}
+
+.bar-svg {
+  margin: 2em 2em 1em 2em;
+  display: block;
+  overflow: visible;
+}
