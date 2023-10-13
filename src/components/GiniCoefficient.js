@@ -21,7 +21,7 @@ const getGiniCoefficient = (teamTimers) => {
     0
   );
 
-  return Math.floor((100 * (idealArea - actualArea)) / idealArea);
+  return Math.round((100 * (idealArea - actualArea)) / idealArea, 2) / 100;
 };
 
 const GiniCoefficient = ({ teamTimers }) => {
@@ -31,16 +31,21 @@ const GiniCoefficient = ({ teamTimers }) => {
     .filter(({ gini }) => gini > giniCoefficient)
     .reverse()[0];
   const worldMinimum = Math.min(...countryGinis.map(({ gini }) => gini));
+  const worldMaximum = Math.max(...countryGinis.map(({ gini }) => gini));
+
+  const feedback =
+    giniCoefficient > worldMaximum
+      ? `Your conversation was less equitable than the wealth of ${countryGinis[0].country}.`
+      : `Your conversation was more equitable than the wealth of ${
+          giniCoefficient < worldMinimum
+            ? "any country on earth"
+            : countryGinis[1].country
+        }.`;
+
   return (
     <div className="Gini">
       <div className="subtitle">Gini coefficient: {giniCoefficient}</div>
-      <div>
-        Your conversation was more equitable than the wealth of{" "}
-        {giniCoefficient < worldMinimum
-          ? "any country on earth"
-          : `${comparison.country} (${comparison.gini})`}
-        .
-      </div>
+      <div>{feedback}</div>
     </div>
   );
 };
