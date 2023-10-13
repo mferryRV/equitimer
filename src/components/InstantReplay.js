@@ -4,13 +4,15 @@ import "./InstantReplay.css";
 import exampleEvents from "../data/exampleEvents.json";
 import { speakerColors, interpolateEvents } from "../utils";
 
-const createSvgGraph = (data, svgRef) => {
+const createSvgGraph = (data, svgRef, parentRef) => {
   data = data.length > 0 ? data : exampleEvents;
   const finalState = data[data.length - 1];
   const maxTimer = Math.max(...Object.values(finalState));
 
-  const width = 640;
-  const height = 400;
+  // Set width and height of display based on container size
+  const width =
+    parseInt(d3.select(parentRef.current).style("width"), 10) - 2.5 * 16;
+  const height = Math.floor((width * 9) / 16);
 
   const svg = d3
     .select(svgRef.current)
@@ -73,15 +75,16 @@ const createSvgGraph = (data, svgRef) => {
 
 const InstantReplay = ({ teamSize, events }) => {
   const svgRef = useRef();
+  const parentRef = useRef();
   const [data, setData] = useState(interpolateEvents(teamSize, events));
 
   // Create SVG chart
   useEffect(() => {
-    createSvgGraph(data, svgRef);
+    createSvgGraph(data, svgRef, parentRef);
   }, [data]);
 
   return (
-    <div className="Instant-replay">
+    <div className="Instant-replay" ref={parentRef}>
       <div className="subtitle">Instant Replay</div>
       <svg ref={svgRef} className="replay-svg"></svg>
     </div>

@@ -1,4 +1,5 @@
 .Results {
+  margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -6,4 +7,5 @@
   text-align: center;
   padding: 1em;
   gap: 0.5em;
+  max-width: 40em;
 }
