@@ -2,6 +2,7 @@ import "./Results.css";
 import Container from "../components/Container";
 import InstantReplay from "../components/InstantReplay";
 import GiniCoefficient from "../components/GiniCoefficient";
+import TeamBarChart from "../components/TeamBarChart";
 
 const content = {
   headline: "Your results",
@@ -12,7 +13,7 @@ const Results = ({ results, teamSize }) => (
     <div className="Results">
       <div className="title">{content.headline}</div>
       <GiniCoefficient teamTimers={results.teamTimers} />
-      {/* <TeamBarChart teamTimers={results.teamTimers} /> */}
+      <TeamBarChart teamTimers={results.teamTimers} />
       <InstantReplay teamSize={teamSize} events={results.events} />
     </div>
   </Container>

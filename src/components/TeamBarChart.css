@@ -1,0 +1,8 @@
+.Team-bar {
+  display: flex;
+  flex-direction: row;
+}
+
+.temp-bar {
+  padding: 1em;
+}
