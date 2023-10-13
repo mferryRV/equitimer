@@ -5,7 +5,14 @@ import countryGinis from "../data/giniCoefficients.json";
 const sum = (arr) => arr.reduce((total, val) => total + val, 0);
 
 const getGiniCoefficient = (teamTimers) => {
-  const [noSpeaker, ...speakingTimes] = teamTimers;
+  // Ignore the noSpeaker timer
+  const speakingTimes = teamTimers.slice(1);
+
+  // Short circuit if no speakers
+  if (sum(speakingTimes) === 0) {
+    return 0;
+  }
+
   // Order by speaking time
   speakingTimes.sort((a, b) => a - b);
 
@@ -24,7 +31,7 @@ const getGiniCoefficient = (teamTimers) => {
   return Math.round((100 * (idealArea - actualArea)) / idealArea, 2) / 100;
 };
 
-const GiniCoefficient = ({ teamTimers }) => {
+const GiniCoefficient = ({ teamTimers = [] }) => {
   const timers = teamTimers.length > 0 ? teamTimers : exampleTeamTimers;
   const giniCoefficient = getGiniCoefficient(timers);
   const comparison = countryGinis
@@ -39,7 +46,7 @@ const GiniCoefficient = ({ teamTimers }) => {
       : `Your conversation was more equitable than the wealth of ${
           giniCoefficient < worldMinimum
             ? "any country on earth"
-            : countryGinis[1].country
+            : comparison.country
         }.`;
 
   return (
