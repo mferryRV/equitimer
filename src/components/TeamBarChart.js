@@ -5,6 +5,7 @@ import {
   formatSpeakerName,
   getResponsiveSvgDims,
   speakerColors,
+  sum,
 } from "../utils";
 import exampleTeamtimers from "../data/exampleTeamTimers.json";
 
@@ -12,9 +13,10 @@ const speakerNameShort = (i) => `#${i}`;
 
 const createSvgGraph = (data, svgRef, parentRef) => {
   // Ignore the noSpeaker timer
-  const speakingTimes = data.slice(1);
+  const speakingTimes = data.slice(1).map((sec) => sec / 60);
   const speakers = speakingTimes.length;
   const maxTimer = Math.max(...speakingTimes);
+  const avgTimer = sum(speakingTimes) / speakers;
 
   // Set width and height of display based on container size
   const [width, height] = getResponsiveSvgDims(parentRef);
@@ -30,6 +32,12 @@ const createSvgGraph = (data, svgRef, parentRef) => {
     .scaleBand()
     .domain(speakingTimes.map((t, i) => speakerNameShort(i + 1)))
     .range([0, width]);
+
+  const xLineScale = d3.scaleLinear().domain([0, 1]).range([0, width]);
+  const avgLine = d3
+    .line()
+    .x((d, i) => xLineScale(i))
+    .y((d) => yScale(d));
 
   const yScale = d3.scaleLinear().domain([0, maxTimer]).range([height, 0]);
 
@@ -48,16 +56,38 @@ const createSvgGraph = (data, svgRef, parentRef) => {
     .attr("fill", (d, i) => speakerColors[formatSpeakerName(i + 1)]);
 
   svg
+    .selectAll(".line")
+    .data([[avgTimer, avgTimer]])
+    .join("path")
+    .attr("d", (d) => avgLine(d))
+    .style("stroke-dasharray", "3, 3")
+    .attr("fill", "none")
+    .attr("stroke", "black")
+    .attr("stroke-width", 2);
+  svg.call((g) =>
+    g
+      .append("text")
+      .attr("x", width)
+      .attr("y", yScale(avgTimer))
+      .attr("fill", "currentColor")
+      .attr("text-anchor", "end")
+      .attr("transform", "translate(0,-4)")
+      .text(
+        `Average: ${Math.floor(avgTimer)}m${Math.round((avgTimer % 1) * 60)}s`
+      )
+  );
+
+  svg
     .append("g")
     .call(yAxis)
     .call((g) =>
       g
         .append("text")
-        .attr("x", -40)
+        .attr("x", -32)
         .attr("y", -16)
         .attr("fill", "currentColor")
         .attr("text-anchor", "start")
-        .text("↑ Speaking Time (s)")
+        .text("↑ Speaking Time (min)")
     );
 
   svg.append("g").call(xAxis).attr("transform", `translate(-8,${height})`);

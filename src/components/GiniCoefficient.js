@@ -1,8 +1,7 @@
 import "./GiniCoefficient.css";
 import exampleTeamTimers from "../data/exampleTeamTimers.json";
 import countryGinis from "../data/giniCoefficients.json";
-
-const sum = (arr) => arr.reduce((total, val) => total + val, 0);
+import { sum } from "../utils";
 
 const getGiniCoefficient = (teamTimers) => {
   // Ignore the noSpeaker timer

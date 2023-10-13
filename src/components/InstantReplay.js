@@ -21,16 +21,19 @@ const createSvgGraph = (data, svgRef, parentRef) => {
 
   const xScale = d3
     .scaleLinear()
-    .domain([0, data.length - 1])
+    .domain([0, (data.length - 1) / 60])
     .range([0, width]);
 
-  const yScale = d3.scaleLinear().domain([0, maxTimer]).range([height, 0]);
+  const yScale = d3
+    .scaleLinear()
+    .domain([0, maxTimer / 60])
+    .range([height, 0]);
 
   const generateScaledLine = (speakerKey) => (d) =>
     d3
       .line()
-      .x((d, i) => xScale(i))
-      .y((d) => yScale(d[speakerKey]))(d);
+      .x((d, i) => xScale(i / 60))
+      .y((d) => yScale(d[speakerKey] / 60))(d);
 
   const xAxis = d3.axisBottom(xScale).ticks(10);
   const yAxis = d3.axisLeft(yScale).ticks(10);
@@ -46,7 +49,7 @@ const createSvgGraph = (data, svgRef, parentRef) => {
         .attr("y", -height - 16)
         .attr("fill", "currentColor")
         .attr("text-anchor", "start")
-        .text("↑ Speaking Time (s)")
+        .text("↑ Speaking Time (min)")
     );
   svg
     .append("g")
@@ -58,7 +61,7 @@ const createSvgGraph = (data, svgRef, parentRef) => {
         .attr("y", height + 32)
         .attr("fill", "currentColor")
         .attr("text-anchor", "start")
-        .text("Meeting Time (s)")
+        .text("Meeting Time (min)")
     );
 
   Object.keys(finalState).forEach((formattedSpeaker) =>
