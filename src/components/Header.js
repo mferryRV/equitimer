@@ -5,7 +5,7 @@ import "./Header.css";
 const Header = () => (
   <header className="Header">
     <a href="/" className="Header-text">
-      Aristimer
+      Equitimer
     </a>
     <a href="/">
       <img src={menu} className="Header-menu" alt="menu" />

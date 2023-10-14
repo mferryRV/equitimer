@@ -1,7 +1,7 @@
 {
-  "name": "aristimer",
+  "name": "equitimer",
   "version": "0.1.0",
-  "homepage": "https://mferryRV.github.io/aristimer",
+  "homepage": "https://mferryRV.github.io/equitimer",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",

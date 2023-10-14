@@ -9,7 +9,7 @@ import Button from "../components/Button";
 const content = {
   headline: "Great teams share time",
   subheadline:
-    "Protect your most valuable resource with feedback from Aristimer",
+    "Protect your most valuable resource with feedback from Equitimer",
   imgAlt: "placeholder",
   cta: "Measure my meeting",
 };
