@@ -1,7 +1,7 @@
 import "./Duration.css";
 import { TextField } from "monday-ui-react-core";
 import { pathMap } from "../../Routes";
-import { parseMinSec } from "../../utils";
+import { leftPadNum, parseMinSec } from "../../utils";
 import FlowPage from "../../components/FlowPage";
 
 const content = {
@@ -17,6 +17,7 @@ const clean = (val) => (isNaN(parseInt(val)) ? 0 : parseInt(val));
 
 const Team = ({ durationSec, setDurationSec }) => {
   const [minutes, seconds] = parseMinSec(durationSec);
+  const paddedSeconds = leftPadNum(seconds);
 
   const updateDuration = (m = 0, s = 0) => setDurationSec(m * 60 + s);
 
@@ -28,7 +29,7 @@ const Team = ({ durationSec, setDurationSec }) => {
       headline={content.headline}
       subheadline={content.subheadline}
       inputTitle={content.inputTitle}
-      cta={content.cta(minutes, seconds)}
+      cta={content.cta(minutes, paddedSeconds)}
       nextPage={nextPage}
     >
       <div className="Duration-display">
@@ -42,7 +43,7 @@ const Team = ({ durationSec, setDurationSec }) => {
         <div className="Duration-display-colon">:</div>
         <TextField
           type={TextField.types.NUMBER}
-          value={seconds}
+          value={paddedSeconds}
           size={TextField.sizes.LARGE}
           onChange={handleChangeSec}
           maxLength={2}
