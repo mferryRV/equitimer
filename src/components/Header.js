@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Menu, MenuItem } from "monday-ui-react-core";
+import { ReactComponent as Logo } from "../img/logo.svg";
 import menu from "../img/menu.svg";
 import "./Header.css";
 import { pathMap } from "../Routes";
@@ -10,8 +11,9 @@ const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   return (
     <header className="Header">
-      <a href="/equitimer" className="Header-text">
-        Equitimer
+      <a className="Header-left" href="/equitimer">
+        <Logo className="Header-logo" alt="logo" />
+        <div className="Header-text">Equitimer</div>
       </a>
       <div onClick={() => setMenuOpen(!isMenuOpen)}>
         <img src={menu} className="Header-menu" alt="menu" />

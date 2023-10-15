@@ -7,6 +7,21 @@
   padding: 0 1em;
 }
 
+.Header-left {
+  display: flex;
+  gap: 0.5em;
+}
+
+.Header-logo {
+  height: 2em;
+  width: 2em;
+}
+
+.Header-logo > g > path,
+.Header-logo > g > rect {
+  fill: black;
+}
+
 .Header-text {
   font-size: 2rem;
   font-weight: 700;
@@ -15,6 +30,7 @@
 .Header-menu {
   width: 1.5em;
   height: 1.5em;
+  cursor: pointer;
 }
 
 .nav-menu-bg {
