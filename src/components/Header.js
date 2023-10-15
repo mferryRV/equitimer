@@ -35,6 +35,15 @@ const Header = () => {
             <div
               className="nav-menu-item"
               onClick={() => {
+                window.open("https://linkedin.com/in/mjferry2016");
+                setMenuOpen(false);
+              }}
+            >
+              Contact
+            </div>
+            <div
+              className="nav-menu-item"
+              onClick={() => {
                 window.open("https://github.com/mferryRV/equitimer");
                 setMenuOpen(false);
               }}
