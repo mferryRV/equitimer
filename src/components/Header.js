@@ -28,8 +28,10 @@ const Header = () => {
                 onClick={() => (window.location = "/equitimer")}
               />
               <MenuItem
-                title="Measure meeting"
-                onClick={() => navigate(pathMap.Team)}
+                title="Measure new meeting"
+                onClick={() =>
+                  (window.location = `/equitimer/#${pathMap.Team}`)
+                }
               />
               <MenuItem
                 title="See source code"
