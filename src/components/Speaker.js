@@ -1,6 +1,6 @@
 import "./Speaker.css";
 import user from "../img/user.svg";
-import { leftPadNum, parseMinSec } from "../utils";
+import { formatSpeakerName, leftPadNum, parseMinSec } from "../utils";
 
 const content = {
   defaultName: (idx) => `#${idx}`,
@@ -15,7 +15,7 @@ const Speaker = ({
   isActive,
   onClick = () => {},
 }) => {
-  const speakerName = name || content.defaultName(speakerIndex);
+  const speakerName = name || formatSpeakerName(speakerIndex);
   const [min, sec] = parseMinSec(speakerTimer);
 
   const displayTimer = leftPadNum(min) + "m" + leftPadNum(sec) + "s";
