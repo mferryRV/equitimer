@@ -1,4 +1,4 @@
-const formatSpeakerName = (i) => `Participant ${i}`;
+const formatSpeakerName = (i) => `#${i}`;
 
 const speakerColorsArray = [
   "var(--color-grass_green)",

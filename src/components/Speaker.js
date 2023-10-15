@@ -1,6 +1,6 @@
 import "./Speaker.css";
-import logo from "../img/logo.svg";
-import { leftPadNum, parseMinSec } from "../utils";
+import user from "../img/user.svg";
+import { formatSpeakerName, leftPadNum, parseMinSec } from "../utils";
 
 const content = {
   defaultName: (idx) => `#${idx}`,
@@ -15,7 +15,7 @@ const Speaker = ({
   isActive,
   onClick = () => {},
 }) => {
-  const speakerName = name || content.defaultName(speakerIndex);
+  const speakerName = name || formatSpeakerName(speakerIndex);
   const [min, sec] = parseMinSec(speakerTimer);
 
   const displayTimer = leftPadNum(min) + "m" + leftPadNum(sec) + "s";
@@ -31,7 +31,7 @@ const Speaker = ({
       onClick={onClick}
     >
       <div className="Speaker-name">{speakerName}</div>
-      <img className="Speaker-image" alt={content.imgAlt} src={logo} />
+      <img className="Speaker-image" alt={content.imgAlt} src={user} />
       <div className="Speaker-data">
         <div>{speakerPercent}</div>
         <div>{displayTimer}</div>
