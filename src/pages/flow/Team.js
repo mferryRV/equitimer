@@ -37,7 +37,7 @@ const Team = ({ teamSize, setTeamSize }) => (
       max={inputSettings.max}
       size={Slider.sizes.LARGE}
       valueFormatter={(value) => `${value}`}
-      onChange={(val) => setTeamSize(val)}
+      onChange={(val) => setTeamSize(parseInt(val))}
     />
     <Warning
       isShown={teamSize === inputSettings.max}
