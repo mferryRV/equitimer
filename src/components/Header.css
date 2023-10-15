@@ -49,3 +49,13 @@
   right: 1em;
   background: white;
 }
+
+.nav-menu-item {
+  width: 100%;
+  padding: 0.5em;
+  font-size: 0.75em;
+}
+
+.nav-menu-item:hover {
+  background-color: var(--primary-selected-hover-color);
+}

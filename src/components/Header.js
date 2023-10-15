@@ -1,14 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Menu, MenuItem } from "monday-ui-react-core";
 import { ReactComponent as Logo } from "../img/logo.svg";
 import menu from "../img/menu.svg";
 import "./Header.css";
 import { pathMap } from "../Routes";
 
 const Header = () => {
-  const navigate = useNavigate();
   const [isMenuOpen, setMenuOpen] = useState(false);
+
   return (
     <header className="Header">
       <a className="Header-left" href="/equitimer">
@@ -22,25 +20,27 @@ const Header = () => {
         <>
           <div className="nav-menu-bg" onClick={() => setMenuOpen(false)} />
           <div className="nav-menu">
-            <Menu>
-              <MenuItem
-                title="Home"
-                onClick={() => (window.location = "/equitimer")}
-              />
-              <MenuItem
-                title="Measure new meeting"
-                onClick={() =>
-                  (window.location = `/equitimer/#${pathMap.Team}`)
-                }
-              />
-              <MenuItem
-                title="See source code"
-                onClick={() => {
-                  window.open("https://github.com/mferryRV/equitimer");
-                  setMenuOpen(false);
-                }}
-              />
-            </Menu>
+            <div
+              className="nav-menu-item"
+              onClick={() => (window.location = "/equitimer")}
+            >
+              Home
+            </div>
+            <div
+              className="nav-menu-item"
+              onClick={() => (window.location = `/equitimer/#${pathMap.Team}`)}
+            >
+              Measure new meeting
+            </div>
+            <div
+              className="nav-menu-item"
+              onClick={() => {
+                window.open("https://github.com/mferryRV/equitimer");
+                setMenuOpen(false);
+              }}
+            >
+              See source code
+            </div>
           </div>
         </>
       )}
