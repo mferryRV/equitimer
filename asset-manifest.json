@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/equitimer/static/css/main.4afcc03d.css",
-    "main.js": "/equitimer/static/js/main.ae5ff962.js",
+    "main.js": "/equitimer/static/js/main.979bb52a.js",
     "static/media/logo.svg": "/equitimer/static/media/logo.4a4a56b7c3f010ee7749f7e33d7abb1c.svg",
     "static/media/user.svg": "/equitimer/static/media/user.86e1938821e2762d4d070d12eec43e6d.svg",
     "index.html": "/equitimer/index.html",
     "static/media/menu.svg": "/equitimer/static/media/menu.086b907838339e4038a8e3a22845e6bc.svg",
     "main.4afcc03d.css.map": "/equitimer/static/css/main.4afcc03d.css.map",
-    "main.ae5ff962.js.map": "/equitimer/static/js/main.ae5ff962.js.map"
+    "main.979bb52a.js.map": "/equitimer/static/js/main.979bb52a.js.map"
   },
   "entrypoints": [
     "static/css/main.4afcc03d.css",
-    "static/js/main.ae5ff962.js"
+    "static/js/main.979bb52a.js"
   ]
 }
